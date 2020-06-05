@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "default");
                 builder.setContentTitle("LP3 Quiz1");
-                builder.setContentText("This is a basic/simple notification");
+                builder.setContentText("This is a simple");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
@@ -72,14 +72,20 @@ public class MainActivity extends AppCompatActivity {
         btnPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Bitmap bm = BitmapFactory.decodeResource(MainActivity.this.getResources(),R.drawable.koala);
+                NotificationCompat.BigPictureStyle bigp = new NotificationCompat.BigPictureStyle();
                 NotificationCompat.Builder builder = new
                         NotificationCompat.Builder(MainActivity.this, "default");
                 builder.setContentTitle("LP3 Quiz1");
                 builder.setContentText("Expand to see picture");
+                bigp.bigPicture(bm);
+                bigp.setBigContentTitle("This is Big Picture");
+                bigp.setSummaryText("Koala!");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
+                builder.setStyle(bigp);
                 builder.setContentIntent(pIntent);
                 builder.setAutoCancel(true);
+
 
                 Notification n = builder.build();
 
@@ -109,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setContentText("Expand to see content");
                 builder.setSmallIcon(android.R.drawable.btn_star_big_off);
                 builder.setContentIntent(pIntent);
+                builder.setStyle(inboxS);
                 builder.setAutoCancel(true);
 
                 Notification n = builder.build();
